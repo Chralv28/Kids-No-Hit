@@ -1,66 +1,161 @@
-        <!DOCTYPE html>
-        <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-        <head> 
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=3.0">
-            <title>Kids No Hit</title><link rel="stylesheet" href="style.css">
-            <style>
-                /* Define the fade-in animation */
-                @keyframes fadeIn {
-                  0% {
-                    opacity: 0;
-                  }
-                  100% {
-                    opacity: 1;
-                  }
-                }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids No Hit</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
 
-                /* The image styles */
-                #busImage {
-                  width: 500px;  /* Set the width of the image */
-                  height: auto;  /* Maintain the aspect ratio */
-                  position: fixed; /* Fixed position so it stays on the screen */
-                  top: 50%; /* Vertically center */
-                  left: 0; /* Position it on the left side */
-                  transform: translate(25%, -25%); /* Adjust to center it vertically */
-                  opacity: 0; /* Start with opacity 0 */
-                  animation: fadeIn 2s ease-out forwards; /* Fade-in animation */
-                }
-            </style>
-        </head>
+        fence {
+            position: fixed;
+            bottom: 0; /* Positioned above the road */
+            width: 100%;
+            left: 0;
+            height: 40vh;
+            display: flex;
+            justify-content: space-between;
+            background-color: transparent;
+            z-index: 3; /* Higher than other elements */
+        }
 
-        <body>
-            <head> Kids No Hit!</head> 
+        .fence-bar {
+            width: 10px;
+            height: 100%;
+            background-color: #726b6b;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 2px;
+        }
 
-            <!-- to create the switch -->
-            <label class = "switch">
-                <input type = 'checkbox' id="toggleSwitch">
-                <span class="slider"></span>
-            </label>
+        .horizontal-rail {
+            position: absolute;
+            width: 100%;
+            height: 12px;
+            background-color: #464444;
+            box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4);
+            border-radius: 6px;
+        }
 
-            <!-- shows the status of the switch -->
-            <p> Status: <span id="status">Bus is here!</span></p>
+        .rail-top {
+            top: 59.1%; /* Adjusted to fit with the road */
+        }
 
-            <!-- Links to the Javascript file-->
-            <script src="script.js"></script> 
-            <img id="busImage" src="bus.jpg" alt="Bus Image">
-        
-            <script>
-                window.addEventListener('load', function() {
-                    const busImageElement = document.getElementById('busImage');
+        .rail-bottom {
+            bottom: 20%; /* Adjusted to fit with the road */
+        }
+        .road {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            height: 32vh;
+            background-color: #333030;
+            border-top: 3px solid #3d3b3b;
+            box-shadow: 0px -4px 10px rgba(14, 14, 14, 0.6);
+        }
 
-                    busImageElement.classList.add('fade-in');
+        .yellow-lines {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 7px;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                yellow 0,
+                rgb(172, 172, 46) 20px,
+                transparent 20px,
+                transparent 40px
+            );
+            transform: translateX(-50%);
+        }
 
-                    const toggleSwitch = document.getElementById('toggleSwitch');
-                    const statusDisplay = document.getElementById('status');
 
-                    if (toggleSwitch && statusDisplay) {
-                        statusDisplay.textContent = 'Bus is here!';
-                    }
-                });
+        #busImage {
+            width: 400px;
+            height: auto;
+            position: fixed;
+            top: 40%;
+            left: 0;
+            transform: translate(25%, -25%);
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
 
-            </script>
-        </body>
+        #stopsignImage {
+            width: 300px;
+            height: auto;
+            position: fixed;
+            bottom: -32%;
+            right: 0;
+            transform: translate(25%, -25%);
+            opacity: 0;
+            animation: fadeIn 2s ease-out forwards;
+        }
 
-        <html>
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Kids No Hit!</h1>
+
+    <!-- Fence -->
+    <div class="fence">
+        <!-- Vertical bars -->
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+        <div class="fence-bar"></div>
+    </div>
+
+    <!-- Horizontal rails -->
+    <div class="horizontal-rail rail-top"></div>
+    <div class="horizontal-rail rail-bottom"></div>
+
+    <!-- Road -->
+    <div class="road">
+        <div class="yellow-lines"></div>
+    </div>
+
+    <!-- Switch -->
+    <label class="switch">
+        <input type='checkbox' id="toggleSwitch">
+        <span class="slider"></span>
+    </label>
+
+    <!-- Status -->
+    <p> Status: <span id="status">Bus is here!</span></p>
+
+    <!-- Images -->
+    <img id="busImage" src="bus.jpg" alt="Bus Image">
+    <img id="stopsignImage" src="stopsign.png" alt="Stop Sign Image">
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('load', function () {
+            const busImageElement = document.getElementById('busImage');
+            busImageElement.classList.add('fade-in');
+        });
+
+        window.addEventListener('load', function () {
+            const stopsignImageElement = document.getElementById('stopsignImage');
+            stopsignImageElement.classList.add('fade-in');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,14 +1,14 @@
-/* Basic background styling */
-body {
-    background-color: #79deec;
+  /* Basic background styling */
+  body {
     margin: 0;
     padding: 0;
+    background-color: #79deec;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    flex-direction: column; /* Ensure the status text appears below the switch */
+    flex-direction: column;
   }
 
   /* Switch container styling */
@@ -66,34 +66,84 @@ body {
     transform: translateX(40px); /* Move knob to the right when "on" */
   }
 
-  /* Lightbulb container styling */
-  #lightbulbContainer {
-    margin-bottom: 30px;
+  /* Header styles */
+  h1 {
+    font-size: 58px;
+    font-family: 'Series B', sans-serif;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    text-align: center;
   }
 
-  #lightbulb {
-    width: 100px;
-    height: 150px;
-    border-radius: 50% 50% 0 0;
-    background-color: #f7f7f7;
-    border: 5px solid #333;
-    position: relative;
-    transition: all 0.3s ease; /* Smooth transition for color change */
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0); /* Default off state, no glow */
+  p1 {
+    font-size: 20px;
+    font-family: 'Series B', sans-serif;
+    top: 40vh;
   }
 
-  #lightbulb.on {
-    background-color: #ff0000; /* Red lightbulb when on */
-    box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Red glow effect */
+  /* Road Styles */
+  .road {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 32vh; /* Adjusted height */
+    background-color: #333030; /* Dark gray for road color */
+    border-top: 3px solid #3d3b3b; /* Darker border for depth */
+    box-shadow: 0px -4px 10px rgba(14, 14, 14, 0.6); /* Shadow for a subtle 3D effect */
   }
 
-  #lightbulb:before {
-    content: '';
+  .yellow-lines {
     position: absolute;
-    bottom: -10px;
-    left: 20%;
-    width: 60%;
-    height: 20px;
-    background-color: #333;
-    border-radius: 50%;
+    top: 0;
+    left: 50%; /* Center the lines horizontally */
+    width: 7px; /* Thickness of the yellow line */
+    height: 100%; /* Full height of the road */
+    background: repeating-linear-gradient(
+      0deg,
+      yellow 0,
+      rgb(172, 172, 46) 20px,
+      transparent 20px,
+      transparent 40px
+    ); /* Dashed line effect */
+    transform: translateX(-50%); /* Center the line */
   }
+
+  /* Metal Rail Fence Styles */
+  .fence {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 40vh;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+  }
+
+  .fence-bar {
+    width: 10px; /* Width of each vertical bar */
+    height: 100%;
+    background-color: #726b6b; /* Light gray for metal look */
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    border-radius: 2px; /* Rounded edges for a softer appearance */
+  }
+
+  .horizontal-rail {
+    position: absolute;
+    width: 100%;
+    height: 12px; /* Thickness of the horizontal rail */
+    background-color: #464444; /* Darker gray for distinction */
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.4); /* Shadow for depth */
+    border-radius: 6px; /* Rounded edges for a smoother look */
+  }
+
+  .rail-top {
+    top: 59.1%; /* Position for top rail */
+  }
+
+  .rail-bottom {
+    bottom: 20%; /* Position for bottom rail */
+  }
+
