@@ -1,0 +1,52 @@
+client.println("<!DOCTYPE html><html>");
+    client.println("<head>");
+    client.println("<meta charset='UTF-8'>");
+    client.println("<meta name='viewport' content='width=device-width, initial-scale=3.0'>");
+    client.println("<title>KNS</title>");
+    client.println("<style>");
+    // CSS Styles
+    client.println("body { font-family: Arial, sans-serif; text-align: center; background-color: #f2f2f2; }");
+    client.println("h1 { color: #333; font-size: 2.5em; margin-top: 20px; }");
+    client.println(".switch { position: relative; display: inline-block; width: 60px; height: 34px; }");
+    client.println(".switch input { opacity: 0; width: 0; height: 0; }");
+    client.println(".slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #ccc; transition: .4s; border-radius: 34px; }");
+    client.println(".slider:before { position: absolute; content: ''; height: 26px; width: 26px; left: 4px; bottom: 4px; background-color: white; transition: .4s; border-radius: 50%; }");
+    client.println("input:checked + .slider { background-color: #4CAF50; }");
+    client.println("input:checked + .slider:before { transform: translateX(26px); }");
+    client.println("#status { font-size: 1.2em; margin-top: 10px; color: #555; }");
+    client.println("#busImage, #stopsignImage { max-width: 100%; height: auto; margin-top: 20px; display: none; }");
+    client.println("#busImage { display: block; margin: 10px auto; max-width: 400px; }"); // Initially show bus image
+    client.println("</style>");
+    client.println("</head>");
+    
+    client.println("<body>");
+    client.println("<h1>Kids No Hit!</h1>");
+    client.println("<label class='switch'>");
+    client.println("<input type='checkbox' id='toggleSwitch'>");
+    client.println("<span class='slider'></span>");
+    client.println("</label>");
+    client.println("<p>Status: <span id='status'>Bus is not here!</span></p>");
+    client.println("<img id='busImage' src='/bus.jpg' alt='Bus Image'>");
+    client.println("<img id='stopsignImage' src='/stopsign.png' alt='Stop Sign Image'>");
+    
+    client.println("<script>");
+    // JavaScript Code
+    client.println("document.getElementById('toggleSwitch').addEventListener('change', function() {");
+    client.println("  let statusText = document.getElementById('status');");
+    client.println("  let busImage = document.getElementById('busImage');");
+    client.println("  let stopsignImage = document.getElementById('stopsignImage');");
+    client.println("  if (this.checked) {");
+    client.println("    statusText.innerText = 'Bus is here!';");
+    client.println("    busImage.style.display = 'none';");
+    client.println("    stopsignImage.style.display = 'block';");
+    client.println("    fetch('/H');  // Send request to turn on LED");
+    client.println("  } else {");
+    client.println("    statusText.innerText = 'Bus is not here!';");
+    client.println("    busImage.style.display = 'block';");
+    client.println("    stopsignImage.style.display = 'none';");
+    client.println("    fetch('/L');  // Send request to turn off LED");
+    client.println("  }");
+    client.println("});");
+    client.println("</script>");
+    
+    client.println("</body></html>");
