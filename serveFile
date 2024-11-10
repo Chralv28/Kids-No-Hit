@@ -1,0 +1,23 @@
+void serveFile(WiFiClient &client, String path) {
+  File file = LittleFS.open(path, "r");
+  if (file) {
+    client.println("HTTP/1.1 200 OK");
+    if (path.endsWith(".jpg")) {
+      client.println("Content-Type: image/jpeg");
+    }
+    client.println("Connection: close");
+    client.println();
+
+    // Send file content
+    while (file.available()) {
+      client.write(file.read());
+    }
+    file.close();
+  } else {
+    // File not found, send 404
+    client.println("HTTP/1.1 404 Not Found");
+    client.println("Connection: close");
+    client.println();
+    client.println("File Not Found");
+  }
+}
