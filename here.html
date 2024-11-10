@@ -5,6 +5,29 @@
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=3.0">
             <title>Kids No Hit</title><link rel="stylesheet" href="style.css">
+            <style>
+                /* Define the fade-in animation */
+                @keyframes fadeIn {
+                  0% {
+                    opacity: 0;
+                  }
+                  100% {
+                    opacity: 1;
+                  }
+                }
+
+                /* The image styles */
+                #busImage {
+                  width: 500px;  /* Set the width of the image */
+                  height: auto;  /* Maintain the aspect ratio */
+                  position: fixed; /* Fixed position so it stays on the screen */
+                  top: 50%; /* Vertically center */
+                  left: 0; /* Position it on the left side */
+                  transform: translate(25%, -25%); /* Adjust to center it vertically */
+                  opacity: 0; /* Start with opacity 0 */
+                  animation: fadeIn 2s ease-out forwards; /* Fade-in animation */
+                }
+            </style>
         </head>
 
         <body>
@@ -21,7 +44,23 @@
 
             <!-- Links to the Javascript file-->
             <script src="script.js"></script> 
+            <img id="busImage" src="bus.jpg" alt="Bus Image">
+        
+            <script>
+                window.addEventListener('load', function() {
+                    const busImageElement = document.getElementById('busImage');
 
+                    busImageElement.classList.add('fade-in');
+
+                    const toggleSwitch = document.getElementById('toggleSwitch');
+                    const statusDisplay = document.getElementById('status');
+
+                    if (toggleSwitch && statusDisplay) {
+                        statusDisplay.textContent = 'Bus is here!';
+                    }
+                });
+
+            </script>
         </body>
 
         <html>

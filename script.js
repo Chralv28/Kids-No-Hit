@@ -13,7 +13,7 @@ function updateSwitchState() {
         statusDisplay.textContent = 'Bus is here!';
     } else {
         window.location.href = '/index.html';
-        statusDisplay.textContent = 'Bus is not here';
+        statusDisplay.textContent = 'Bus is not here!';
     }
 }
 

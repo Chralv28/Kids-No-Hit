@@ -1,6 +1,6 @@
 /* Basic background styling */
 body {
-    background-color: #f2c007;
+    background-color: #79deec;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -10,12 +10,12 @@ body {
     height: 100vh;
     flex-direction: column; /* Ensure the status text appears below the switch */
   }
-  
+
   /* Switch container styling */
   .switch-container {
     margin-bottom: 30px; /* Adds space between the switch and the lightbulb */
   }
-  
+
   /* Switch styling */
   .switch {
     width: 80px;
@@ -27,13 +27,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
   }
-  
+
   .switch input {
     opacity: 0;
     position: absolute;
     z-index: -1; /* Hide the default checkbox input */
   }
-  
+
   .switch .slider {
     position: absolute;
     cursor: pointer;
@@ -45,11 +45,11 @@ body {
     transition: 0.4s;
     border-radius: 20px;
   }
-  
+
   .switch input:checked + .slider {
-    background-color: #ff0000; /* Green when on */
+    background-color: #ff0000; /* Red when on */
   }
-  
+
   .switch .slider:before {
     content: "";
     position: absolute;
@@ -61,16 +61,16 @@ body {
     background-color: white;
     transition: 0.4s;
   }
-  
+
   .switch input:checked + .slider:before {
     transform: translateX(40px); /* Move knob to the right when "on" */
   }
-  
+
   /* Lightbulb container styling */
   #lightbulbContainer {
     margin-bottom: 30px;
   }
-  
+
   #lightbulb {
     width: 100px;
     height: 150px;
@@ -81,12 +81,12 @@ body {
     transition: all 0.3s ease; /* Smooth transition for color change */
     box-shadow: 0 0 30px rgba(255, 0, 0, 0); /* Default off state, no glow */
   }
-  
+
   #lightbulb.on {
     background-color: #ff0000; /* Red lightbulb when on */
     box-shadow: 0 0 30px rgba(255, 0, 0, 0.7); /* Red glow effect */
   }
-  
+
   #lightbulb:before {
     content: '';
     position: absolute;
@@ -97,4 +97,3 @@ body {
     background-color: #333;
     border-radius: 50%;
   }
-  
